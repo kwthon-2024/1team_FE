@@ -1,4 +1,4 @@
-import { Router } from 'react-router'
+import { AppRoutes } from '../router'
 import styled from 'styled-components'
 
 const AppContainer = styled.div`
@@ -21,7 +21,7 @@ const AppContainer = styled.div`
 function App() {
   return (
     <AppContainer>
-      <Router />
+      <AppRoutes />
     </AppContainer>
   )
 }
