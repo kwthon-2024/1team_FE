@@ -10,6 +10,11 @@ const HeaderLayout = styled.header`
   padding: 30px 64px;
 `
 
+const MainLayout = styled.main`
+  width: 100%;
+  height: calc(100vh - 196px);
+`
+
 const MainHeader = () => {
   return (
     <>
@@ -22,7 +27,9 @@ const MainHeader = () => {
           <MainHeaderIcons />
         </FlexBetween>
       </HeaderLayout>
-      <Outlet />
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
     </>
   )
 }
