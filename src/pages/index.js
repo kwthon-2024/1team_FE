@@ -1,0 +1,7 @@
+export * from './MainPage'
+export * from './DetailPage'
+export * from './SignInPage'
+export * from './SignUpPage'
+export * from './SearchPage'
+export * from './WritePage'
+export * from './ReadPage'

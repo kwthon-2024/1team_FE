@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+const AppContainer = styled.div`
   position: relative;
   height: 100vh;
-  background-color: black;
+  background-color: ${(props) => props.theme.colors.red1};
 
   &::after {
     content: '';
@@ -11,19 +11,14 @@ const Container = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 80px;
     background: linear-gradient(360deg, #ffffff -5.09%, rgba(145, 145, 145, 0) 100%);
-    pointer-events: none;
+    /* pointer-events: none; */
     z-index: 0;
   }
 `
-
 function App() {
-  return (
-    <Container>
-      <div>안녕하세요</div>
-    </Container>
-  )
+  return <AppContainer></AppContainer>
 }
 
 export default App
