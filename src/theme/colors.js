@@ -4,4 +4,5 @@ export const colors = {
   green: '#1D5524',
   white: '#FFFFFF',
   black: '#000000',
+  gray1: '#C3C0C5', // placeholder color
 }
