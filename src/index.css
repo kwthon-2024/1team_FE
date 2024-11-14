@@ -128,6 +128,24 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: 'moneygraphy';
+  src: url('fonts/Moneygraphy-Rounded.ttf');
+  font-weight: normal;
+}
+
 * {
   box-sizing: border-box;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+div {
+  font-family: 'moneygraphy', sans-serif;
+}
+
+/* font-family: "Montserrat", sans-serif; */
