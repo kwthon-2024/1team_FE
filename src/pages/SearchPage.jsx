@@ -1,12 +1,28 @@
 import { FaSearch } from 'react-icons/fa'
 import styled from 'styled-components'
+import useDebounce from '@/Hooks/useDebounce'
+import { useEffect, useState } from 'react'
 
 export const SearchPage = () => {
+  const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      console.log('검색어: ', debouncedSearchTerm)
+    }
+  }, [debouncedSearchTerm])
+
   return (
     <StyledDiv>
       <StyledForm>
         <SearchIcon />
-        <StyledInput type='text' placeholder='학번, 학과, 이름을 통해 친구의 트리를 찾아보세요!' />
+        <StyledInput
+          type='text'
+          placeholder='학번, 학과, 이름을 통해 친구의 트리를 찾아보세요!'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <StyledButton>Search</StyledButton>
       </StyledForm>
     </StyledDiv>
