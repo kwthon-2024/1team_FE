@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Logo, FlexBetween, Flex, H3 } from '@/components/atoms'
 import { colors } from '@/theme/colors'
+import { Outlet } from 'react-router'
+import { ContentHeaderIcons, MainHeaderIcons } from '@/components/modules'
 
 const HeaderLayout = styled.header`
   width: 100%;
@@ -8,18 +10,56 @@ const HeaderLayout = styled.header`
   padding: 30px 64px;
 `
 
-export const Header = ({ Icons }) => {
+const MainHeader = () => {
   return (
-    <HeaderLayout>
-      <FlexBetween>
-        {/* left items */}
+    <>
+      <HeaderLayout>
+        <FlexBetween>
+          <Flex gap={16}>
+            <Logo />
+            <H3 style={{ color: colors.white }}>KWTree</H3>
+          </Flex>
+          <MainHeaderIcons />
+        </FlexBetween>
+      </HeaderLayout>
+      <Outlet />
+    </>
+  )
+}
+
+const AuthHeader = () => {
+  return (
+    <>
+      <HeaderLayout>
         <Flex gap={16}>
           <Logo />
           <H3 style={{ color: colors.white }}>KWTree</H3>
         </Flex>
-        {/* right items */}
-        <Icons />
-      </FlexBetween>
-    </HeaderLayout>
+      </HeaderLayout>
+      <Outlet />
+    </>
   )
+}
+
+const ContentHeader = () => {
+  return (
+    <>
+      <HeaderLayout>
+        <FlexBetween>
+          <Flex gap={16}>
+            <Logo />
+            <H3 style={{ color: colors.white }}>KWTree</H3>
+          </Flex>
+          <ContentHeaderIcons />
+        </FlexBetween>
+      </HeaderLayout>
+      <Outlet />
+    </>
+  )
+}
+
+export const Header = {
+  Main: MainHeader,
+  Auth: AuthHeader,
+  Content: ContentHeader,
 }
