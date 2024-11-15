@@ -5,4 +5,5 @@ export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   gray1: '#C3C0C5', // placeholder color
+  hover: '#f6edeb',
 }
