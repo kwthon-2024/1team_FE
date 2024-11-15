@@ -33,15 +33,24 @@ const ImageWrapper = styled.div`
 const AuthWrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.theme.colors.white};
-  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
-const AuthContent = styled.div`
+const AuthContainer = styled.div`
   width: 500px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.white};
+  border-radius: 15px;
+`
+
+const SignInForm = styled.div`
+  width: 430px;
+  margin: 0 auto;
 `
 
 const MainHeader = () => {
@@ -74,9 +83,11 @@ const AuthHeader = () => {
       </HeaderLayout>
       <AuthLayout>
         <AuthWrapper>
-          <AuthContent>
-            <Outlet />
-          </AuthContent>
+          <AuthContainer>
+            <SignInForm>
+              <Outlet />
+            </SignInForm>
+          </AuthContainer>
         </AuthWrapper>
         <ImageWrapper>
           <img src='/images/tree.png' />
