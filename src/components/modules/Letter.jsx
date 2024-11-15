@@ -17,30 +17,29 @@ const LetterPaper = ({ text }) => {
 }
 
 const LetterContainer = styled.div`
-  width: 80%;
-  max-width: 700px;
+  width: 500px;
+  height: 300px;
   padding: 20px;
   margin: 0 auto;
-  background-color: #fff; /* 편지지 배경색 */
-  border-radius: 15px;
+  background-color: #fff;
+  border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 `
 
 const Line = styled.div`
   border-bottom: 1px solid #ccc;
   width: 100%;
-  margin: 15px 0;
+  padding: 10px 10px; /* 텍스트와 줄 사이 간격 조정 */
   position: relative;
 `
 
 const LetterText = styled.div`
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  top: 20px;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.5;
   color: #333;
   word-wrap: break-word;
   white-space: pre-wrap;

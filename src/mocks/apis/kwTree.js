@@ -38,7 +38,7 @@ export const kwTreeMailBoxList = http.get('/kwTree/mailBoxList', (req) => {
   })
 })
 
-export const kwTree = http.get('/kwTree/mailBox/{mailId}', (req) => {
+export const kwTree = http.get('/kwTree/mailBox', (req) => {
   return HttpResponse.json({
     status: 200,
     message: '광운 메일 정보를 불러왔습니다',
@@ -53,15 +53,15 @@ export const kwTree = http.get('/kwTree/mailBox/{mailId}', (req) => {
       photos: [
         {
           photoId: 23,
-          photoUrl: 'https://example.com/photo1.jpg',
+          photoUrl: 'https://cdn.pixabay.com/photo/2024/04/10/17/02/towel-8688401_1280.jpg',
         },
         {
           photoId: 24,
-          photoUrl: 'https://example.com/photo2.jpg',
+          photoUrl: 'https://cdn.pixabay.com/photo/2024/11/02/15/31/cat-9169528_1280.jpg',
         },
         {
           photoId: 25,
-          photoUrl: 'https://example.com/photo3.jpg',
+          photoUrl: 'https://cdn.pixabay.com/photo/2024/05/19/13/40/daisy-8772631_1280.jpg',
         },
       ],
     },
