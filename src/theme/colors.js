@@ -6,5 +6,6 @@ export const colors = {
   black: '#000000',
   gray2: '#999999',
   gray1: '#C3C0C5',
+  gray3: '#D6CFCF',
   hover: '#f6edeb',
 }
