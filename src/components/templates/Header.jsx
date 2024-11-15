@@ -12,7 +12,36 @@ const HeaderLayout = styled.header`
 
 const MainLayout = styled.main`
   width: 100%;
-  height: calc(100vh - 196px);
+  height: calc(100vh - 116px);
+`
+
+const AuthLayout = styled.div`
+  width: 100%;
+  height: calc(100vh - 116px);
+  padding: 0 40px 80px;
+  display: flex;
+`
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+`
+
+const AuthWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) => props.theme.colors.white};
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const AuthContent = styled.div`
+  width: 500px;
 `
 
 const MainHeader = () => {
@@ -43,7 +72,16 @@ const AuthHeader = () => {
           <H3 style={{ color: colors.white }}>KWTree</H3>
         </Flex>
       </HeaderLayout>
-      <Outlet />
+      <AuthLayout>
+        <AuthWrapper>
+          <AuthContent>
+            <Outlet />
+          </AuthContent>
+        </AuthWrapper>
+        <ImageWrapper>
+          <img src='/images/tree.png' />
+        </ImageWrapper>
+      </AuthLayout>
     </>
   )
 }
