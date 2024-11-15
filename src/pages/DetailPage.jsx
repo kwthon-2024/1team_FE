@@ -231,5 +231,3 @@ const StyledPrevButton = styled.div`
   color: white;
   z-index: 1;
 `
-
-export default MainPage

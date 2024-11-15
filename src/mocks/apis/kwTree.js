@@ -38,7 +38,7 @@ export const kwTreeMailBoxList = http.get('/kwTree/mailBoxList', (req) => {
   })
 })
 
-export const kwTree = http.get('/kwTree/mailBox', (req) => {
+export const kwTree = http.get('/kwTree/mailBox/:mailId', (req) => {
   return HttpResponse.json({
     status: 200,
     message: '광운 메일 정보를 불러왔습니다',
