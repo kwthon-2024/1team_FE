@@ -1,4 +1,6 @@
 import { CardItem, ToggleFilter } from '@/components/modules'
+import { CHRISMASID } from '@/constants/chrismas'
+import { useWatchId } from '@/stores'
 import styled from 'styled-components'
 
 const Grid = styled.div`
@@ -13,6 +15,8 @@ const Grid = styled.div`
 `
 
 export const ReadPage = () => {
+  const watchId = useWatchId()
+
   const data = [
     {
       mailDate: '2024-11-13',
@@ -238,7 +242,7 @@ export const ReadPage = () => {
 
   return (
     <>
-      <ToggleFilter />
+      {watchId === CHRISMASID || <ToggleFilter />}
       <Grid>
         {data.map((item, index) => (
           <CardItem key={index} item={item} cardId={index} />

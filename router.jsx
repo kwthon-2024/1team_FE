@@ -47,7 +47,7 @@ export const AppRoutes = () => {
           }
         />
         <Route path='detail/:mailId' element={<DetailPage />} />
-        <Route path='read/:userId' element={<ReadPage />} />
+        <Route path='read' element={<ReadPage />} />
       </Route>
     </Routes>
   )
