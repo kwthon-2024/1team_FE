@@ -4,7 +4,9 @@ export const colors = {
   green: '#1D5524',
   white: '#FFFFFF',
   black: '#000000',
-  gray1: '#C3C0C5', // placeholder color
+  gray2: '#999999',
+  gray1: '#C3C0C5',
+  gray3: '#D6CFCF',
   hover: '#f6edeb',
   alertSuccessB: '#EDF7ED',
   alertSuccessT: '#1E4620',

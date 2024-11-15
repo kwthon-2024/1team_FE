@@ -11,3 +11,8 @@ export const FlexBetween = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+
+export const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`
