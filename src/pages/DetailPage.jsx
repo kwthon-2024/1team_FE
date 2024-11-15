@@ -36,7 +36,7 @@ export const DetailPage = () => {
   useEffect(() => {
     const fetchMail = async () => {
       try {
-        const response = await axios.get(`/kwTree/mailBox`)
+        const response = await axios.get(`/kwTree/mailBox/${1}`)
         setPhotoList(response.data.data.photos)
         setLetterText(response.data.data.mailText)
         setLetterTitle(response.data.data.mailName)
