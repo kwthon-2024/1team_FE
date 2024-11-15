@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Logo, FlexBetween, Flex, H3 } from '@/components/atoms'
 import { colors } from '@/theme/colors'
-import { Outlet } from 'react-router'
+import { Outlet, useNavigate } from 'react-router'
 import { ContentHeaderIcons, MainHeaderIcons } from '@/components/modules'
 
 const HeaderLayout = styled.header`
@@ -54,11 +54,13 @@ const SignInForm = styled.div`
 `
 
 const MainHeader = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <HeaderLayout>
         <FlexBetween>
-          <Flex gap={16}>
+          <Flex onClick={() => navigate('/main')} style={{ cursor: 'pointer' }} gap={16}>
             <Logo />
             <H3 style={{ color: colors.white }}>KWTree</H3>
           </Flex>
@@ -73,10 +75,12 @@ const MainHeader = () => {
 }
 
 const AuthHeader = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <HeaderLayout>
-        <Flex gap={16}>
+        <Flex onClick={() => navigate('/main')} style={{ cursor: 'pointer' }} gap={16}>
           <Logo />
           <H3 style={{ color: colors.white }}>KWTree</H3>
         </Flex>
@@ -98,11 +102,13 @@ const AuthHeader = () => {
 }
 
 const ContentHeader = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <HeaderLayout>
         <FlexBetween>
-          <Flex gap={16}>
+          <Flex onClick={() => navigate('/main')} style={{ cursor: 'pointer' }} gap={16}>
             <Logo />
             <H3 style={{ color: colors.white }}>KWTree</H3>
           </Flex>

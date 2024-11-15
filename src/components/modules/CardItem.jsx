@@ -10,6 +10,7 @@ export const CardItem = ({ item, cardId }) => {
     photo: { photoUrl },
   } = item
   const isOdd = cardId % 2 === 1
+
   return (
     <S.Wrapper isOdd={isOdd}>
       <S.Image src={photoUrl}></S.Image>
