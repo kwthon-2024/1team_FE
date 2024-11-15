@@ -147,7 +147,8 @@ p,
 div,
 input,
 span,
-textarea {
+textarea,
+button {
   font-family: 'moneygraphy', sans-serif;
 }
 

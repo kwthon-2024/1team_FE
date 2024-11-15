@@ -5,4 +5,6 @@ export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   gray2: '#999999',
+  gray1: '#C3C0C5',
+  hover: '#f6edeb',
 }
