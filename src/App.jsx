@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 const AppContainer = styled.div`
   position: relative;
+  width: 100%;
+  min-width: 1000px;
   min-height: 100vh;
   background-color: ${(props) => props.theme.colors.red1};
 
