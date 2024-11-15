@@ -5,7 +5,7 @@ const FormContext = createContext()
 const FormActionsContext = createContext()
 
 export const FormProvider = ({ children }) => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, control } = useForm()
   const onSubmit = (data) => console.log(data)
 
   const actions = useMemo(
@@ -17,18 +17,27 @@ export const FormProvider = ({ children }) => {
 
   return (
     <FormActionsContext.Provider value={actions}>
-      <FormContext.Provider value={register}>{children}</FormContext.Provider>
+      <FormContext.Provider value={{ register, control }}>{children}</FormContext.Provider>
     </FormActionsContext.Provider>
   )
 }
 
 export const useRegister = () => {
-  const context = useContext(FormContext)
-  if (!context) {
+  const { register } = useContext(FormContext)
+  if (!register) {
     throw new Error('useFormRegister Error')
   }
 
-  return context
+  return register
+}
+
+export const useControl = () => {
+  const { control } = useContext(FormContext)
+  if (!control) {
+    throw new Error('useFormControl Error')
+  }
+
+  return control
 }
 
 export const useFormSubmit = () => {

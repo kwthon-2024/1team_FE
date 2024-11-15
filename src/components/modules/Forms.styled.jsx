@@ -25,3 +25,24 @@ export const CerifyButton = styled.button`
   color: ${(props) => props.theme.colors.white};
   background-color: ${(props) => props.theme.colors.red2};
 `
+
+export const TextArea = styled.textarea`
+  min-height: 200px;
+  padding: 12px;
+  flex: 1;
+`
+
+export const Select = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 12px;
+`
+
+export const SelectButton = styled.button`
+  width: 100%;
+  height: 52px;
+  color: #3c3c3c;
+  background-color: ${(props) => (props.$active ? 'rgba(138, 22, 1, 0.2)' : '')};
+  border: 1px solid ${(props) => props.theme.colors.gray2};
+  border-radius: 10px;
+`

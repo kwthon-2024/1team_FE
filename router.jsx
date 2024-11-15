@@ -38,7 +38,14 @@ export const AppRoutes = () => {
         />
       </Route>
       <Route path='/content' element={<Header.Content />}>
-        <Route path='write' element={<WritePage />} />
+        <Route
+          path='write'
+          element={
+            <FormProvider>
+              <WritePage />
+            </FormProvider>
+          }
+        />
         <Route path='detail/:mailId' element={<DetailPage />} />
         <Route path='read/:userId' element={<ReadPage />} />
       </Route>
