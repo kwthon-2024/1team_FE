@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
 
+/*
 async function enableMocking() {
   if (!import.meta.env.DEV) {
     return
@@ -33,4 +34,17 @@ enableMocking().then(
       </ThemeProvider>
     </StrictMode>,
   ),
+)
+*/
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </BrowserRouter>
+    </ThemeProvider>
+  </StrictMode>,
 )

@@ -17,14 +17,13 @@ const MainLayout = styled.main`
 
 const AuthLayout = styled.div`
   width: 100%;
-  height: calc(100vh - 116px);
   padding: 0 40px 80px;
   display: flex;
 `
 
 const Image = styled.img`
   width: 100%;
-  height: 100%;
+  height: 516px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -33,7 +32,6 @@ const Image = styled.img`
 
 const AuthWrapper = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +39,6 @@ const AuthWrapper = styled.div`
 
 const AuthContainer = styled.div`
   width: 500px;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +48,7 @@ const AuthContainer = styled.div`
 
 const SignInForm = styled.div`
   width: 430px;
-  margin: 0 auto;
+  margin: 40px auto;
 `
 
 const MainHeader = () => {
