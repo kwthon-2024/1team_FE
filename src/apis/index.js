@@ -2,7 +2,7 @@ import axios from 'axios'
 import { filters } from '@/constants'
 
 const api = axios.create({
-  baseURL: 'http://localhost:5173/',
+  baseURL: import.meta.env.DEV ? 'http://localhost:5173/' : import.meta.env.VITE_BASEURL,
 })
 
 export const getTree = async (id) => {

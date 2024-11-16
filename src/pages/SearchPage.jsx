@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import useDebounce from '@/Hooks/useDebounce'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useUserActions, useUserId } from '@/stores/userStore'
+import { useUserActions } from '@/stores/userStore'
 import { CHRISMASID } from '@/constants/chrismas'
 import { useNavigate } from 'react-router'
 
@@ -13,7 +13,6 @@ export const SearchPage = () => {
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const { setWatchId } = useUserActions()
   const navigate = useNavigate()
-  const userId = useUserId()
 
   useEffect(() => {
     const fetchRecommendations = async () => {
@@ -21,7 +20,6 @@ export const SearchPage = () => {
       try {
         const response = await axios.get(`/search?query=${debouncedSearchTerm}`)
         setRecommendList(response.data.data.results) // response.data.results -> response.data.data.results
-        console.log('Recommendations fetched:', response.data.data.results)
       } catch (error) {
         console.error('Error fetching recommendations:', error)
       }
@@ -30,8 +28,7 @@ export const SearchPage = () => {
     fetchRecommendations()
   }, [debouncedSearchTerm])
 
-  const clicjSearchItem = (item) => {
-    console.log(item)
+  const clicjSearchItem = () => {
     setWatchId(CHRISMASID)
     navigate('/main')
   }
