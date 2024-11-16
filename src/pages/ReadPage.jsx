@@ -1,5 +1,5 @@
-import { getFriendMail, getMyMail } from '@/apis'
-import { CardItem, ToggleFilter } from '@/components/modules'
+import { getFriendMail, getKWTreeMail, getMyMail } from '@/apis'
+import { Button, CardItem, ToggleFilter } from '@/components/modules'
 import { CHRISMASID } from '@/constants/chrismas'
 import { useUserId, useWatchId } from '@/stores'
 import { useQuery } from '@tanstack/react-query'
@@ -20,16 +20,25 @@ const Grid = styled.div`
 
 export const ReadPage = () => {
   const [filter, setFilter] = useState(true)
+  const [page, setPage] = useState(0)
   const watchId = useWatchId()
   const userId = useUserId()
   const navigate = useNavigate()
   const { data, isLoading } = useQuery({
-    queryKey: ['list', watchId, filter],
+    queryKey: ['list', watchId, filter, page],
     queryFn: () => {
-      if (userId === watchId) {
-        return getMyMail(watchId, filter)
+      if (watchId === CHRISMASID) {
+        return getKWTreeMail()
+      } else if (userId === watchId) {
+        return getMyMail(watchId, filter, {
+          page,
+          size: 10,
+        })
       } else {
-        return getFriendMail(watchId)
+        return getFriendMail(watchId, {
+          page,
+          size: 10,
+        })
       }
     },
   })
@@ -53,6 +62,9 @@ export const ReadPage = () => {
           />
         ))}
       </Grid>
+      <Button style={{ width: '200px', margin: '0 auto' }} onClick={() => setPage(page + 1)}>
+        페이지 추가
+      </Button>
     </>
   )
 }

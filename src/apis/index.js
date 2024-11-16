@@ -45,17 +45,25 @@ export const postMail = async (id, request) => {
   return response
 }
 
-export const getFriendMail = async (id) => {
-  const response = await api.get(`/friendMail/${id}`)
+export const getFriendMail = async (id, { page, size }) => {
+  const response = await api.get(`/friendMail/${id}?page=${page}&size=${size}`)
   return response
 }
 
-export const getMyMail = async (id, filter) => {
-  const response = await api.get(`/myMail/${id}?filter=${filters[filter]}`)
+export const getMyMail = async (id, filter, { page, size }) => {
+  const response = await api.get(
+    `/myMail/${id}?filter=${filters[filter]}?page=${page}&size=${size}`,
+  )
   return response
 }
 
 export const getSearch = async (q) => {
   const response = await api.get(`/search?keyword=${q}`)
+  return response.data
+}
+
+export const getKWTreeMail = async () => {
+  const response = await api.get('/kwTree/mailBoxList')
+  console.log(response)
   return response.data
 }
