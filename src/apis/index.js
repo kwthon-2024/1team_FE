@@ -1,9 +1,13 @@
-import { filters } from '@/constants'
 import axios from 'axios'
+import { filters } from '@/constants'
 
 const api = axios.create({
   baseURL: 'http://localhost:5173/',
 })
+
+export const getTree = async (id) => {
+  const response = await axios.get(`/tree/${id}`)
+}
 
 export const postSignUp = async (requset) => {
   const response = await api.post('/auth/signUp', requset)
