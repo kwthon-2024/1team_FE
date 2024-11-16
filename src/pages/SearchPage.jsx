@@ -3,11 +3,17 @@ import styled from 'styled-components'
 import useDebounce from '@/Hooks/useDebounce'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useUserActions, useUserId } from '@/stores/userStore'
+import { CHRISMASID } from '@/constants/chrismas'
+import { useNavigate } from 'react-router'
 
 export const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [recommendList, setRecommendList] = useState([])
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
+  const { setWatchId } = useUserActions()
+  const navigate = useNavigate()
+  const userId = useUserId()
 
   useEffect(() => {
     const fetchRecommendations = async () => {
@@ -23,6 +29,12 @@ export const SearchPage = () => {
 
     fetchRecommendations()
   }, [debouncedSearchTerm])
+
+  const clicjSearchItem = (item) => {
+    console.log(item)
+    setWatchId(CHRISMASID)
+    navigate('/main')
+  }
 
   return (
     <>
@@ -42,7 +54,7 @@ export const SearchPage = () => {
         {debouncedSearchTerm && recommendList.length > 0 && (
           <SearchItemList>
             {recommendList.map((item, index) => (
-              <SearchItem key={index} onClick={() => console.log(item)}>
+              <SearchItem key={index} onClick={() => clicjSearchItem(item)}>
                 <SearchIcon />
                 {`${item.studentId}, ${item.name}, ${item.department}`}
               </SearchItem>
