@@ -54,3 +54,8 @@ export const getMyMail = async (id, filter) => {
   const response = await api.get(`/myMail/${id}?filter=${filters[filter]}`)
   return response
 }
+
+export const getSearch = async (q) => {
+  const response = await api.get(`/search?keyword=${q}`)
+  return response.data
+}

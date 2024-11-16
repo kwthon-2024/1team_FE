@@ -114,8 +114,10 @@ export const MailInput = ({ isCertify }) => {
 
 export const MailCertifyInput = ({ isCertify, setIsCertify }) => {
   const [code, setCode] = useState('')
+  const { watch } = useFormContext()
+  const email = watch('email')
   const handleClickCertify = async () => {
-    const { data } = await postEmailVerification({ code: Number(code) })
+    const { data } = await postEmailVerification({ email, code: Number(code) })
     if (data.status === 200) {
       setIsCertify(true)
     }

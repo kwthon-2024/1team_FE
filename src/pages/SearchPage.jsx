@@ -1,32 +1,28 @@
 import { FaSearch } from 'react-icons/fa'
 import styled from 'styled-components'
 import useDebounce from '@/Hooks/useDebounce'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useUserActions } from '@/stores/userStore'
 import { CHRISMASID } from '@/constants/chrismas'
 import { useNavigate } from 'react-router'
-import { api } from '@/apis'
+import { getSearch } from '@/apis'
+import { useQuery } from '@tanstack/react-query'
 
 export const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
-  const [recommendList, setRecommendList] = useState([])
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const { setWatchId } = useUserActions()
   const navigate = useNavigate()
+  const { data, isLoading } = useQuery({
+    queryKey: [debouncedSearchTerm],
+    queryFn: () => getSearch(debouncedSearchTerm),
+  })
 
-  useEffect(() => {
-    const fetchRecommendations = async () => {
-      if (!debouncedSearchTerm.trim()) return // 빈 문자열일 때 호출 방지
-      try {
-        const response = await api.get(`/search?query=${debouncedSearchTerm}`)
-        setRecommendList(response.data.data.results) // response.data.results -> response.data.data.results
-      } catch (error) {
-        console.error('Error fetching recommendations:', error)
-      }
-    }
+  if (isLoading) {
+    return
+  }
 
-    fetchRecommendations()
-  }, [debouncedSearchTerm])
+  const { data: searchData } = data
 
   const clicjSearchItem = () => {
     setWatchId(CHRISMASID)
@@ -48,16 +44,14 @@ export const SearchPage = () => {
         </StyledForm>
       </StyledDiv>
       <StyledDiv justifyContent='start' marginTop='15px'>
-        {debouncedSearchTerm && recommendList.length > 0 && (
-          <SearchItemList>
-            {recommendList.map((item, index) => (
-              <SearchItem key={index} onClick={() => clicjSearchItem(item)}>
-                <SearchIcon />
-                {`${item.studentId}, ${item.name}, ${item.department}`}
-              </SearchItem>
-            ))}
-          </SearchItemList>
-        )}
+        <SearchItemList>
+          {searchData.map((item, index) => (
+            <SearchItem key={index} onClick={() => clicjSearchItem(item)}>
+              <SearchIcon />
+              {`${item.studentId}, ${item.name}, ${item.department}`}
+            </SearchItem>
+          ))}
+        </SearchItemList>
       </StyledDiv>
     </>
   )
