@@ -1,5 +1,6 @@
 import { CHRISMASID } from '@/constants/chrismas'
 import { useUserId, useWatchId } from '@/stores'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import styled from 'styled-components'
 
@@ -31,6 +32,13 @@ export const MainPage = () => {
   const watchId = useWatchId()
   const userId = useUserId()
 
+  useEffect(() => {
+    ;(async function () {
+      const response = await fetch('http://localhost:5173/tree/1')
+      console.log(response)
+    })()
+  }, [])
+
   console.log('watch id', watchId)
   console.log('user id', userId)
 
@@ -46,7 +54,7 @@ export const MainPage = () => {
     if (!userId) {
       navigate('/auth/sign-in')
     } else {
-      navigate('/content/read')
+      navigate('/content/write')
     }
   }
 

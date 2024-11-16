@@ -1,4 +1,4 @@
 export const filters = {
-  false: 'receive',
-  true: 'send',
+  true: 'receive',
+  false: 'send',
 }

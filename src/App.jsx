@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AppRoutes } from '../router'
 import styled from 'styled-components'
 
@@ -21,10 +22,13 @@ const AppContainer = styled.div`
   }
 `
 function App() {
+  const queryClient = new QueryClient()
   return (
-    <AppContainer>
-      <AppRoutes />
-    </AppContainer>
+    <QueryClientProvider client={queryClient}>
+      <AppContainer>
+        <AppRoutes />
+      </AppContainer>
+    </QueryClientProvider>
   )
 }
 
