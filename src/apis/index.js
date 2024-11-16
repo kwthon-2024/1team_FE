@@ -1,13 +1,18 @@
 import axios from 'axios'
 import { filters } from '@/constants'
 
+const baseUrl = import.meta.env.VITE_BASEURL
+
 const api = axios.create({
+  headers: {
+    'Content-Type': 'application/json',
+  },
   // baseURL: import.meta.env.DEV ? 'http://localhost:5173/' : import.meta.env.VITE_BASEURL,
-  baseURL: import.meta.env.VITE_BASEURL,
+  baseURL: baseUrl,
 })
 
 export const getTree = async (id) => {
-  const response = await axios.get(`/tree/${id}`)
+  const response = await api.get(`/tree/${id}`)
   return response
 }
 

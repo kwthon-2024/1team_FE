@@ -1,7 +1,8 @@
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Header } from '@/components/templates'
 import {
   DetailPage,
+  IndexPage,
   MainPage,
   ReadPage,
   SearchPage,
@@ -13,7 +14,7 @@ import {
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='/main' replace />} />
+      <Route path='/' element={<IndexPage />} />
       <Route path='/main' element={<Header.Main />}>
         <Route index element={<MainPage />} />
         <Route path='search' element={<SearchPage />} />

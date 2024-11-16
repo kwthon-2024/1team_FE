@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import { theme } from '@/theme'
 import { BrowserRouter } from 'react-router-dom'
 
+/*
 async function enableMocking() {
   if (!import.meta.env.DEV) {
     return
@@ -28,4 +29,17 @@ enableMocking().then(
       </ThemeProvider>
     </StrictMode>,
   ),
+)
+*/
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </BrowserRouter>
+    </ThemeProvider>
+  </StrictMode>,
 )
