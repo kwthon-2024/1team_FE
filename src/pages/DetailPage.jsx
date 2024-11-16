@@ -123,7 +123,7 @@ const Container = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin-right: 10px;
