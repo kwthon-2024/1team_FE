@@ -7,6 +7,7 @@ const api = axios.create({
 
 export const getTree = async (id) => {
   const response = await axios.get(`/tree/${id}`)
+  return response
 }
 
 export const postSignUp = async (requset) => {
