@@ -2,16 +2,16 @@ import { CiLock, CiUser, CiMenuBurger, CiFaceSmile, CiMail, CiPaperplane } from 
 import { FlexColumn } from '../atoms'
 import { useEffect, useState } from 'react'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
-import { useControl, useRegister } from '@/components/modules'
 import { PiSubtitlesLight } from 'react-icons/pi'
 import * as S from './Forms.styled'
-import { Controller, useController } from 'react-hook-form'
+import { Controller, useController, useFormContext } from 'react-hook-form'
 import FileUpload from 'react-material-file-upload'
 import { Typography } from '@mui/material'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+import { postEmailDuplication, postEmailVerification } from '@/apis'
 
 export const StudentIdInput = () => {
-  const register = useRegister()
+  const { register } = useFormContext()
 
   return (
     <FlexColumn style={{ gap: '16px' }}>
@@ -26,7 +26,7 @@ export const StudentIdInput = () => {
 
 // 추후에 select로 변경 (개발 후순위)
 export const DepartmentInput = () => {
-  const register = useRegister()
+  const { register } = useFormContext()
 
   return (
     <FlexColumn style={{ gap: '16px' }}>
@@ -40,7 +40,7 @@ export const DepartmentInput = () => {
 }
 
 export const NameInput = () => {
-  const register = useRegister()
+  const { register } = useFormContext()
 
   return (
     <FlexColumn style={{ gap: '16px' }}>
@@ -54,7 +54,7 @@ export const NameInput = () => {
 }
 
 export const PasswordInput = () => {
-  const register = useRegister()
+  const { register } = useFormContext()
   const [isShowingPassword, setIsShowingPassword] = useState(false)
 
   const handleToggleShowingPassword = () => {
@@ -80,11 +80,18 @@ export const PasswordInput = () => {
 }
 
 export const MailInput = ({ isCertify }) => {
-  const handleClickPostEmail = () => {
-    alert('메일을 보냈습니다.')
-  }
+  const { watch, register } = useFormContext()
+  const email = watch('email')
 
-  const register = useRegister()
+  const handleClickPostEmail = async () => {
+    const { data } = await postEmailDuplication({ email })
+
+    if (data.status === 200) {
+      alert('메일을 보냈습니다.')
+    } else {
+      alert(data.message)
+    }
+  }
 
   return (
     <FlexColumn style={{ gap: '16px' }}>
@@ -106,9 +113,15 @@ export const MailInput = ({ isCertify }) => {
 }
 
 export const MailCertifyInput = ({ isCertify, setIsCertify }) => {
-  const handleClickCertify = () => {
-    alert('인증되었습니다.')
-    setIsCertify(true)
+  const [code, setCode] = useState('')
+  const handleClickCertify = async () => {
+    const { data } = await postEmailVerification({ code })
+    console.log(data.message)
+    if (data.status === 200) {
+      setIsCertify(true)
+    }
+
+    alert(data.message)
   }
 
   return (
@@ -116,7 +129,12 @@ export const MailCertifyInput = ({ isCertify, setIsCertify }) => {
       <S.Label>인증번호</S.Label>
       <S.InputWrapper>
         <CiPaperplane />
-        <S.Input type='text' placeholder='인증번호를 입력해주세요.' disabled={isCertify} />
+        <S.Input
+          type='text'
+          onChange={(e) => setCode(e.target.value)}
+          placeholder='인증번호를 입력해주세요.'
+          disabled={isCertify}
+        />
         <S.CerifyButton onClick={handleClickCertify} type='button'>
           확인하기
         </S.CerifyButton>
@@ -126,7 +144,7 @@ export const MailCertifyInput = ({ isCertify, setIsCertify }) => {
 }
 
 export const TitleForm = () => {
-  const register = useRegister()
+  const { register } = useFormContext()
 
   return (
     <FlexColumn style={{ gap: '16px' }}>
@@ -144,7 +162,7 @@ export const TitleForm = () => {
 }
 
 export const ContentForm = () => {
-  const register = useRegister()
+  const { register } = useFormContext()
 
   return (
     <FlexColumn style={{ gap: '16px' }}>
@@ -154,8 +172,7 @@ export const ContentForm = () => {
   )
 }
 
-export const SelectIsPublic = () => {
-  const control = useControl()
+export const SelectIsPublic = ({ control }) => {
   const { field } = useController({
     name: 'isPublic',
     control,
@@ -174,8 +191,7 @@ export const SelectIsPublic = () => {
   )
 }
 
-export const FileUploader = () => {
-  const control = useControl()
+export const FileUploader = ({ control }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       const icon = document.querySelector('.css-q6abum-MuiSvgIcon-root')

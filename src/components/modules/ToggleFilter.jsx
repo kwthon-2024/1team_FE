@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import * as S from './ToggleFilter.styled'
 
-export const ToggleFilter = () => {
-  const [filter, setFilter] = useState(true)
-
+export const ToggleFilter = ({ filter, setFilter }) => {
   const toggleFilter = () => setFilter((prev) => !prev)
 
   return (

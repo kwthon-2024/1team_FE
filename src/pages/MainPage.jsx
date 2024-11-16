@@ -1,5 +1,6 @@
 import { CHRISMASID } from '@/constants/chrismas'
 import { useUserId, useWatchId } from '@/stores'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import styled, { keyframes } from 'styled-components'
 import axios from 'axios'
@@ -15,7 +16,7 @@ const Container = styled.main`
   justify-content: space-evenly;
   align-items: flex-end;
 `
-// 로딩 애니메이션 스타일
+
 const spin = keyframes`
   0% {
     transform: rotate(0deg);
@@ -72,7 +73,6 @@ export const MainPage = () => {
     fetchTreeData()
   }, [watchId])
 
-  // treeImageUrls 배열 정의
   const treeImageUrls = [
     '/images/tree.png',
     '/images/Tree1.png',
@@ -87,8 +87,6 @@ export const MainPage = () => {
     '/images/Tree10.png',
   ]
 
-  console.log('treeLevel', treeLevel)
-
   const handleClickMailBox = () => {
     if (!(userId || watchId === CHRISMASID)) {
       navigate('/auth/sign-in')
@@ -101,13 +99,12 @@ export const MainPage = () => {
     if (!userId) {
       navigate('/auth/sign-in')
     } else {
-      navigate('/content/read')
+      navigate('/content/write')
     }
   }
 
   return (
     <Container>
-      {treeLevel}
       <Image.Small
         onClick={handleClickMailBox}
         style={{ cursor: 'pointer' }}

@@ -1,12 +1,21 @@
 import { createContext, useContext, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
+import { useSignUp } from '@/utils'
 
 const FormContext = createContext()
 const FormActionsContext = createContext()
 
-export const FormProvider = ({ children }) => {
+export const FormProvider = ({ children, type }) => {
   const { register, handleSubmit, control } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const signUp = useSignUp()
+  const onSubmit = (form) => {
+    if (type === 'signUp') {
+      signUp(form)
+    }
+    // else if (type === 'signIn') {
+    // } else if (type === 'write') {
+    // }
+  }
 
   const actions = useMemo(
     () => ({
@@ -20,6 +29,12 @@ export const FormProvider = ({ children }) => {
       <FormContext.Provider value={{ register, control }}>{children}</FormContext.Provider>
     </FormActionsContext.Provider>
   )
+}
+
+export const useFormErrors = () => {
+  const { errors } = useContext(FormContext)
+
+  return errors
 }
 
 export const useRegister = () => {

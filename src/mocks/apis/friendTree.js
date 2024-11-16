@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw'
 
-export const friendTreeMailBoxList = http.get('/friendMail/:memberId', (req) => {
+export const friendTreeMailBoxList = http.get('/friendMail/:memberId', () => {
   return HttpResponse.json({
     status: 200,
     message: '친구 메일 정보를 불러왔습니다',
@@ -14,7 +14,8 @@ export const friendTreeMailBoxList = http.get('/friendMail/:memberId', (req) => 
           photo: {
             // 사진 한장만 보여주기
             photoId: 23,
-            photoUrl: 'https://example.com/photo1.jpg',
+            photoUrl:
+              'https://item.kakaocdn.net/do/493188dee481260d5c89790036be0e66f604e7b0e6900f9ac53a43965300eb9a',
           },
         },
         {
@@ -25,7 +26,8 @@ export const friendTreeMailBoxList = http.get('/friendMail/:memberId', (req) => 
           photo: {
             // 사진 한장만 보여주기
             photoId: 23,
-            photoUrl: 'https://example.com/photo1.jpg',
+            photoUrl:
+              'https://item.kakaocdn.net/do/493188dee481260d5c89790036be0e66f604e7b0e6900f9ac53a43965300eb9a',
           },
         },
         {
@@ -36,7 +38,8 @@ export const friendTreeMailBoxList = http.get('/friendMail/:memberId', (req) => 
           photo: {
             // 사진 한장만 보여주기
             photoId: 23,
-            photoUrl: 'https://example.com/photo1.jpg',
+            photoUrl:
+              'https://item.kakaocdn.net/do/493188dee481260d5c89790036be0e66f604e7b0e6900f9ac53a43965300eb9a',
           },
         },
       ],
@@ -44,7 +47,7 @@ export const friendTreeMailBoxList = http.get('/friendMail/:memberId', (req) => 
   })
 })
 
-export const friendTree = http.get('/freindMail/detail/:mailId', (req) => {
+export const friendTree = http.get('/freindMail/detail/:mailId', () => {
   return HttpResponse.json({
     status: 200,
     message: '내 메일 정보를 불러왔습니다',

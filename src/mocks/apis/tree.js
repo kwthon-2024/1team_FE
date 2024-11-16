@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw'
 
-export const tree = http.get('/tree/:id', (req) => {
+export const tree = http.get('/tree/:id', () => {
   // 요청의 쿼리 파라미터에서 'query' 값을 추출
   // const searchQuery = req.url.searchParams.get('query')
 
