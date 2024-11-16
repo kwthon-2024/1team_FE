@@ -3,7 +3,7 @@ import { filters } from '@/constants'
 
 const baseUrl = import.meta.env.VITE_BASEURL
 
-const api = axios.create({
+export const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },

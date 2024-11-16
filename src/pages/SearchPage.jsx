@@ -2,10 +2,10 @@ import { FaSearch } from 'react-icons/fa'
 import styled from 'styled-components'
 import useDebounce from '@/Hooks/useDebounce'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useUserActions } from '@/stores/userStore'
 import { CHRISMASID } from '@/constants/chrismas'
 import { useNavigate } from 'react-router'
+import { api } from '@/apis'
 
 export const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -18,7 +18,7 @@ export const SearchPage = () => {
     const fetchRecommendations = async () => {
       if (!debouncedSearchTerm.trim()) return // 빈 문자열일 때 호출 방지
       try {
-        const response = await axios.get(`/search?query=${debouncedSearchTerm}`)
+        const response = await api.get(`/search?query=${debouncedSearchTerm}`)
         setRecommendList(response.data.data.results) // response.data.results -> response.data.data.results
       } catch (error) {
         console.error('Error fetching recommendations:', error)
