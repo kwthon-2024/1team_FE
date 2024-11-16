@@ -1,13 +1,13 @@
 import { http, HttpResponse } from 'msw'
 
-export const mail = http.post('/mail/:memberId', (res) => {
+export const signIn = http.post('/auth/login', (res) => {
   console.log(res)
 
   return HttpResponse.json({
     status: 200,
-    message: '편지 작성이 완료되었습니다.',
+    message: '로그인 성공',
     data: {
-      mailId: 13,
+      studentId: 2022203000,
     },
   })
 })

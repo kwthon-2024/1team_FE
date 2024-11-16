@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { GrLinkPrevious, GrLinkNext } from 'react-icons/gr'
 import { HiArrowLongRight } from 'react-icons/hi2'

@@ -22,12 +22,13 @@ const AuthLayout = styled.div`
   display: flex;
 `
 
-const ImageWrapper = styled.div`
+const Image = styled.img`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  object-fit: contain;
 `
 
 const AuthWrapper = styled.div`
@@ -93,9 +94,7 @@ const AuthHeader = () => {
             </SignInForm>
           </AuthContainer>
         </AuthWrapper>
-        <ImageWrapper>
-          <img src='/images/tree.png' />
-        </ImageWrapper>
+        <Image src='/images/tree.png' />
       </AuthLayout>
     </>
   )

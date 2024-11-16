@@ -9,7 +9,6 @@ import {
   SignUpPage,
   WritePage,
 } from '@/pages'
-import { FormProvider } from '@/components/modules'
 
 export const AppRoutes = () => {
   return (
@@ -20,32 +19,11 @@ export const AppRoutes = () => {
         <Route path='search' element={<SearchPage />} />
       </Route>
       <Route path='/auth' element={<Header.Auth />}>
-        <Route
-          path='sign-in'
-          element={
-            <FormProvider>
-              <SignInPage />
-            </FormProvider>
-          }
-        />
-        <Route
-          path='sign-up'
-          element={
-            <FormProvider>
-              <SignUpPage />
-            </FormProvider>
-          }
-        />
+        <Route path='sign-in' element={<SignInPage />} />
+        <Route path='sign-up' element={<SignUpPage />} />
       </Route>
       <Route path='/content' element={<Header.Content />}>
-        <Route
-          path='write'
-          element={
-            <FormProvider>
-              <WritePage />
-            </FormProvider>
-          }
-        />
+        <Route path='write' element={<WritePage />} />
         <Route path='detail/:mailId' element={<DetailPage />} />
         <Route path='read' element={<ReadPage />} />
       </Route>
